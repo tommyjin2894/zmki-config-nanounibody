@@ -1,4 +1,4 @@
-if SHIELD_TOMMYKEYBOARD
+if SHIELD_tom_nano
 
 config ZMK_KEYBOARD_NAME
     default "tom_nano"
