@@ -1,2 +1,2 @@
 config SHIELD_tom_nano
-    def_bool y if SHIELD_TOM_NANO
+    def_bool y if SHIELD_tom_nano
