@@ -1,0 +1,6 @@
+if SHIELD_TOMMYKEYBOARD
+
+config ZMK_KEYBOARD_NAME
+    default "tom_nano"
+
+endif
