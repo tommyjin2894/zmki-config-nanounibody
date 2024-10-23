@@ -1,2 +1,3 @@
 config SHIELD_tom_nano
-    def_bool y if SHIELD_tom_nano
+    bool "Tom Nano Shield"
+    default y
