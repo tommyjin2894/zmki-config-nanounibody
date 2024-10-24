@@ -1,8 +1,57 @@
+#include "mouse.dtsi"
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <behaviors/mouse_keys.dtsi>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        double_func {
+            bindings = <&kp LEFT_ALT>;
+            key-positions = <31 32>;
+        };
+
+        windowkey {
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <12 13>;
+        };
+
+        for_mouse {
+            bindings = <&mo 3>;
+            key-positions = <29 37>;
+        };
+
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <8 9>;
+        };
+
+        delete {
+            bindings = <&kp DELETE>;
+            key-positions = <7 8>;
+        };
+
+        wiondow {
+            bindings = <&kp LWIN>;
+            key-positions = <20 21 22>;
+        };
+
+        lclr {
+            bindings = <&kp LC(LEFT_ALT)>;
+            key-positions = <21 22 23>;
+        };
+
+        bt {
+            bindings = <&mo 4>;
+            key-positions = <25 34>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -13,20 +62,17 @@
             // |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
             //             | ctr | SPC | mo1 |   | mo2 | ENT  | kro |
 
+            // -----------------------------------------------------------------------------------------
+            // |  0  |  1  |  2  |  3  |  4  |   |  5  |  6   |  7  |  8  |  9  |
+            // |  10 |  11 |  12 |  13 |  14 |   |  15 |  16  |  17 |  18 |  19 |
+            // |  20 |  21 |  22 |  23 |  24 |   |  25 |  26  |  27 |  28 |  29 |
+            //             |  30 |  31 |  32 |   |  33 |  34  |  35 |
+
             bindings = <
 &kp Q  &kp W  &kp E      &kp R      &kp T    &kp Y  &kp U      &kp I          &kp O    &kp P     
 &kp A  &kp S  &kp D      &kp F      &kp G    &kp H  &kp J      &kp K          &kp L    &kp SEMI  
 &kp Z  &kp X  &kp C      &kp V      &kp B    &kp N  &kp M      &kp COMMA      &kp DOT  &kp LSHIFT
               &kp LCTRL  &kp SPACE  &mo 1    &mo 2  &kp ENTER  &kp RIGHT_ALT
-            >;
-        };
-
-        layer_1 {
-            bindings = <
-&kp ESC    &kp N1  &kp N2  &kp N3  &kp EQUAL    &none      &kp HOME        &kp UP_ARROW      &kp END            &none  
-&kp GRAVE  &kp N4  &kp N5  &kp N6  &kp MINUS    &none      &kp LEFT_ARROW  &kp DOWN_ARROW    &kp RIGHT_ARROW    &kp SQT
-&kp TAB    &kp N7  &kp N8  &kp N9  &kp N0       &kp SLASH  &kp BACKSLASH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans 
-                          &trans  &trans  &trans       &trans     &trans          &trans
             >;
         };
 
@@ -36,6 +82,24 @@
 &kp GRAVE  &kp F4  &kp F5  &kp F6  &kp F11    &kp LA(TAB)         &kp PRINTSCREEN     &none      &none  &none
 &kp TAB    &kp F7  &kp F8  &kp F9  &kp F10    &kp LS(LC(DELETE))  &kp LC(LA(DELETE))  &none      &none  &none
                           &none   &none   &none      &none               &none               &none
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+&none      &mkp MB4       U_MS_U      &mkp MB5    &kp C_VOLUME_UP       &kp PAGE_UP      &mkp MB1   U_WH_U    &mkp MB2    &mkp MB3
+&none      U_MS_L         U_MS_D      U_MS_R      &kp C_VOL_DN          &kp PAGE_DOWN    U_WH_L     U_WH_D    U_WH_R      &none
+&none      &kp F7         &none       &none       &none                 &none            &none      &none     &none       &none
+                                         &trans      &trans           &none                  &none      &none      &none
+            >;
+        };
+
+        layer_4 {
+            bindings = <
+&none  &none  &none  &none  &none    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR_ALL
+&none  &none  &none  &none  &none    &none         &none         &none         &out OUT_BLE  &out OUT_USB
+&none  &none  &none  &none  &none    &none         &none         &none         &none         &none
+                     &none  &none  &none    &none         &none         &none
             >;
         };
     };
