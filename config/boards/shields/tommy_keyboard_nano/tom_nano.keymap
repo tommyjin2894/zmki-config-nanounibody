@@ -18,12 +18,12 @@
 
         windowkey {
             bindings = <&kp CAPSLOCK>;
-            key-positions = <12 13>;
+            key-positions = <10 11>;
         };
 
         for_mouse {
             bindings = <&mo 3>;
-            key-positions = <29 37>;
+            key-positions = <31 24>;
         };
 
         backspace {
