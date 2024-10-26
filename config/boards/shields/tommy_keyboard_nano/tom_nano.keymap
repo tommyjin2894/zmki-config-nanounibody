@@ -95,10 +95,10 @@
 
         layer_3 {
             bindings = <
-&none &none U_MS_U &none &none &none &none &none &none &none
-&none &none &none &none &none &none &none &none &none &none
-&none &none &none &none &none &none &none &none &none &none
-&none &none &none &none &none &none 
+&none &mkp MB4  &none &none &none &none &none &none &none
+&none &none     &none &none &none &none &none &none &none &none
+&none &none     &none &none &none &none &none &none &none &none
+&none &none     &none &none &none &none 
             >;
         };
 
