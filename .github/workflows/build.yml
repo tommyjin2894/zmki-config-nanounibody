@@ -2,8 +2,23 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
-    with:
-      shield: tom_nano
-      board: nice_nano_v2
-      zmk-config-path: config  # west.yml 파일이 위치한 폴더 경로
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y git cmake python3-pip
+          pip3 install --user west
+
+      - name: Initialize West and Update
+        run: |
+          west init -l config  # west.yml 파일이 있는 폴더 경로
+          west update
+
+      - name: Build Firmware
+        run: |
+          west build -s app -d build -b nice_nano_v2 -- -DSHIELD=tom_nano
