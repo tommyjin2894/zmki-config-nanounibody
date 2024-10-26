@@ -3,3 +3,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      shield: tom_nano
+      board: nice_nano_v2
+      zmk-config-path: config  # west.yml 파일이 위치한 폴더 경로
