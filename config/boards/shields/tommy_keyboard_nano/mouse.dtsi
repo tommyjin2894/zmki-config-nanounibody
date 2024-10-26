@@ -1,3 +1,44 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+    behaviors {
+        /omit-if-no-ref/ msc: mouse_scroll {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            x-input-code = <INPUT_REL_HWHEEL>;
+            y-input-code = <INPUT_REL_WHEEL>;
+            time-to-max-speed-ms = <300>;
+            acceleration-exponent = <0>;
+        };
+
+        /omit-if-no-ref/ mmv: mouse_move {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            x-input-code = <INPUT_REL_X>;
+            y-input-code = <INPUT_REL_Y>;
+            time-to-max-speed-ms = <300>;
+            acceleration-exponent = <1>;
+        };
+    };
+
+    msc_input_listener: msc_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&msc>;
+    };
+
+    mmv_input_listener: mmv_input_listener {
+        compatible = "zmk,input-listener";
+        device = <&mmv>;
+    };
+};
+
+
 #define ZMK_MOUSE_DEFAULT_MOVE_VAL 1500  // 600
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 20    // 10
 
